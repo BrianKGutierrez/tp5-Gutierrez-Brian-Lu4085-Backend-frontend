@@ -1,0 +1,30 @@
+<div>
+  <h2>Lista de Tickets</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Precio Ticket</th>
+        <th>Categoría de Espectador</th>
+        <th>Fecha de Compra</th>
+        <th>Espectador</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.precioTicket }}</td>
+        <td>{{ ticket.categoriaEspectador === 'local' ? 'Local' : 'Extranjero' }}</td>
+        <td>{{ ticket.fechaCompra | date }}</td>
+        <td>{{ ticket.espectador.nombre }} {{ ticket.espectador.apellido }}</td>
+        <td>
+          <button (click)="onDelete(ticket._id)" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Resumen de Ventas</h3>
+  <p>Total Local: {{ resumen.totalLocal }}</p>
+  <p>Total Extranjero: {{ resumen.totalExtranjero }}</p>
+  <p>Total General: {{ resumen.totalGeneral }}</p>
+</div>

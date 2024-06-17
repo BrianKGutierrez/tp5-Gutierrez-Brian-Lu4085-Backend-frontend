@@ -1,0 +1,19 @@
+<h2>Product List</h2>
+
+<div class="row">
+  <div class="col-md-4" *ngFor="let product of products">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="'http://localhost:3000/uploads/' + product.image" alt="{{product.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p>Price: {{product.price}}</p>
+        <p>Stock: {{product.stock}}</p>
+        <p>Featured: {{product.featured ? 'Yes' : 'No'}}</p>
+        
+        <button class="btn btn-warning" (click)="onEdit(product._id)">Edit</button>
+        <button class="btn btn-danger" (click)="onDelete(product._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

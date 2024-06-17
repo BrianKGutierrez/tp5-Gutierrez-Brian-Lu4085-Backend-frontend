@@ -1,0 +1,27 @@
+<h2>Productos Destacados</h2>
+
+<div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let product of featuredProducts; let i = index" [ngClass]="{'active': i === 0}">
+      <div class="card" style="width: 18rem; margin: auto;">
+        <img class="card-img-top" [src]="'http://localhost:3000/uploads/' + product.image" alt="{{product.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <p>Precio: {{product.price}}</p>
+          <p>Stock: {{product.stock}}</p>
+          <p>Destacado: {{product.featured ? 'Sí' : 'No'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev custom-carousel-control" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon custom-carousel-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next custom-carousel-control" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon custom-carousel-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+

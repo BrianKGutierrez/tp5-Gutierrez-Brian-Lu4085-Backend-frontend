@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['sector']">Sector</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="['sectorform','0']">lISTADO(NUEVO)</a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Productos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['products']">Listado de Productos</a></li>
+            <li><a class="dropdown-item" [routerLink]="['products/new']">Formulario de Productos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['/products/featured']">Productos Destacados</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Transacciones
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['transactions']">Transacciones</a></li>
+            <li><a class="dropdown-item" [routerLink]="['transactions/new']">Nueva Transaccion</a></li>
+            <!-- <li><a class="dropdown-item" [routerLink]="[]">Transacciones Registradas</a></li> -->
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['transactions/email']">Transacciones por cliente</a></li>
+            <li><a class="dropdown-item" [routerLink]="['transactions/currency']">Transacciones por divisas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tickets
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['ticket-list']">Listado de ticket</a></li>
+            <li><a class="dropdown-item" [routerLink]="['create-ticket']">Nuevo ticket</a></li>
+            <li><a class="dropdown-item" [routerLink]="[]">Transacciones Registradas</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['espectador-create']">Crear Espectador</a></li>
+            <li><a class="dropdown-item" [routerLink]="['espectador-list']">Lista de Espectadores</a></li>
+          
+            
+          </ul>//
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

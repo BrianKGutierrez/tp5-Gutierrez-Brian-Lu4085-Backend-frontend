@@ -1,0 +1,10 @@
+<div *ngIf="espectador">
+    <h2>Detalles del Espectador</h2>
+    <p><strong>ID:</strong> {{ espectador._id }}</p>
+    <p><strong>Apellido:</strong> {{ espectador.apellido }}</p>
+    <p><strong>Nombre:</strong> {{ espectador.nombre }}</p>
+    <p><strong>DNI:</strong> {{ espectador.dni }}</p>
+    <p><strong>Email:</strong> {{ espectador.email }}</p>
+    <button (click)="goBack()" class="btn btn-secondary">Volver</button>
+  </div>
+  

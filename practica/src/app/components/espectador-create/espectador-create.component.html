@@ -1,0 +1,24 @@
+<!-- src/app/components/espectador-create/espectador-create.component.html -->
+<div>
+    <h2>Crear Espectador</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" [(ngModel)]="espectador.apellido" name="apellido" required>
+      </div>
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" [(ngModel)]="espectador.nombre" name="nombre" required>
+      </div>
+      <div>
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" [(ngModel)]="espectador.dni" name="dni" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="espectador.email" name="email" required>
+      </div>
+      <button type="submit">Crear</button>
+    </form>
+  </div>
+  

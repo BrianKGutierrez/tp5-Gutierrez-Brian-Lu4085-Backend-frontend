@@ -1,0 +1,28 @@
+<h2>{{editMode ? 'Edit' : 'Add'}} Product</h2>
+<form (ngSubmit)="onSubmit()" [formGroup]="productForm">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text">
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input id="price" formControlName="price" type="number">
+  </div>
+  <div>
+    <label for="stock">Stock</label>
+    <input id="stock" formControlName="stock" type="number">
+  </div>
+  <div>
+    <label for="featured">Featured</label>
+    <input id="featured" formControlName="featured" type="checkbox">
+  </div>
+  <div>
+    <label for="image">Image</label>
+    <input id="image" type="file" (change)="onFileSelect($event)">
+  </div>
+  <button type="submit">{{editMode ? 'Update' : 'Create'}} Product</button>
+</form>

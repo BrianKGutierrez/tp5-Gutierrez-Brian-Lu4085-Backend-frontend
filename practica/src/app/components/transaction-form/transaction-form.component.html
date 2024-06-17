@@ -1,0 +1,35 @@
+<!-- src/app/components/transaction-form/transaction-form.component.html -->
+<h2>Create Transaction</h2>
+<form (ngSubmit)="onSubmit()" [formGroup]="transactionForm" >
+  <div>
+    <label for="monedaOrigen">Moneda Origen</label>
+    <input id="monedaOrigen" type="text" formControlName="monedaOrigen">
+  </div>
+
+  <div>
+    <label for="cantidadOrigen">Cantidad Origen</label>
+    <input id="cantidadOrigen" type="number" formControlName="cantidadOrigen">
+  </div>
+
+  <div>
+    <label for="monedaDestino">Moneda Destino</label>
+    <input id="monedaDestino" type="text" formControlName="monedaDestino">
+  </div>
+
+  <div>
+    <label for="cantidadDestino">Cantidad Destino</label>
+    <input id="cantidadDestino" type="number" formControlName="cantidadDestino">
+  </div>
+
+  <div>
+    <label for="emailCliente">Email Cliente</label>
+    <input id="emailCliente" type="email" formControlName="emailCliente">
+  </div>
+
+  <div>
+    <label for="tasaConversion">Tasa de Conversión</label>
+    <input id="tasaConversion" type="number" formControlName="tasaConversion">
+  </div>
+
+  <button type="submit">Create Transaction</button>
+</form>

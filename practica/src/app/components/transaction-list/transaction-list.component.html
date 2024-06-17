@@ -1,0 +1,7 @@
+<!-- src/app/components/transaction-list/transaction-list.component.html -->
+<h2>All Transactions</h2>
+<ul>
+  <li *ngFor="let transaction of transactions">
+    {{ transaction.monedaOrigen }} {{ transaction.cantidadOrigen }} to {{ transaction.monedaDestino }} {{ transaction.cantidadDestino }} ({{ transaction.emailCliente }})
+  </li>
+</ul>

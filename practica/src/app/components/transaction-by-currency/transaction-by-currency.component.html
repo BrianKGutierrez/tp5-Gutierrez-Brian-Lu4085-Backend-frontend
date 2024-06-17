@@ -1,0 +1,10 @@
+<!-- src/app/components/transaction-by-currency/transaction-by-currency.component.html -->
+<h2>Transactions by Currency</h2>
+<input type="text" [(ngModel)]="monedaOrigen" placeholder="Enter origin currency">
+<input type="text" [(ngModel)]="monedaDestino" placeholder="Enter destination currency">
+<button (click)="getTransactions()">Search</button>
+<ul>
+  <li *ngFor="let transaction of transactions">
+    {{ transaction.monedaOrigen }} {{ transaction.cantidadOrigen }} to {{ transaction.monedaDestino }} {{ transaction.cantidadDestino }} ({{ transaction.emailCliente }})
+  </li>
+</ul>

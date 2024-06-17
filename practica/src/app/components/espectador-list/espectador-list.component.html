@@ -1,0 +1,25 @@
+<div *ngIf="espectadores.length">
+  <h2>Lista de Espectadores</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let espectador of espectadores">
+        <td>{{ espectador._id }}</td>
+        <td>{{ espectador.apellido }}</td>
+        <td>{{ espectador.nombre }}</td>
+      
+        <td>
+          <a (click)="verDetalles(espectador._id)" class="btn btn-info btn-sm">Ver detalles</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

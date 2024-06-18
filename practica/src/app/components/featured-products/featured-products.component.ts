@@ -13,17 +13,22 @@ import { Producto } from '../../models/producto';
 export class FeaturedProductsComponent {
   featuredProducts: Producto[] = [];
 
-  constructor(private productService: ProductService) { }
+ 
+  groupedFeaturedProducts: Producto[][] = []; 
+
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productService.getFeaturedProducts().subscribe(
-      (products) => {
-        this.featuredProducts = products;
-      },
-      (error) => {
-        console.error('Error fetching featured products:', error);
-      }
-    );
+    this.productService.getFeaturedProducts().subscribe(products => {
+      this.featuredProducts = products;
+      this.groupFeaturedProducts();
+    });
+  }
+
+  groupFeaturedProducts() {
+    for (let i = 0; i < this.featuredProducts.length; i += 2) {
+      this.groupedFeaturedProducts.push(this.featuredProducts.slice(i, i + 2));
+    }
   }
 }
 

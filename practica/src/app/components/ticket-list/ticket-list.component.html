@@ -1,30 +1,79 @@
-<div>
-  <h2>Lista de Tickets</h2>
-  <table class="table table-striped">
+<div class="container">
+  <h3 class="mt-5">Lista de Tickets </h3>
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Precio Ticket</th>
-        <th>Categoría de Espectador</th>
-        <th>Fecha de Compra</th>
-        <th>Espectador</th>
-        <th>Acciones</th>
+        <th scope="col">Precio Ticket</th>
+        <th scope="col">Categoria espectador</th>
+        <th scope="col">Fecha Compra</th>
+        <th scope="col">Espectador</th>
+        <th scope>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ticket of tickets">
-        <td>{{ ticket.precioTicket }}</td>
-        <td>{{ ticket.categoriaEspectador === 'local' ? 'Local' : 'Extranjero' }}</td>
-        <td>{{ ticket.fechaCompra | date }}</td>
-        <td>{{ ticket.espectador.nombre }} {{ ticket.espectador.apellido }}</td>
+      <tr *ngFor="let t of tickets">
+        <td>{{t.precioTicket}}</td>
+        <td>{{ t.categoriaEspectador === 'l' ? 'Local' : t.categoriaEspectador === 'e' ? 'Extranjero' : 'Desconocido'}}</td>
+        <td>{{t.fechaCompra}}</td>
+        <td>{{t.espectador.apellido}}, {{t.espectador.nombre}}</td>
         <td>
-          <button (click)="onDelete(ticket._id)" class="btn btn-danger btn-sm">Eliminar</button>
+          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#eliminarModal" (click)="seleccionarTicket(t)">
+            <i class="bi bi-trash3"></i>
+          </button>
+          <button type="button" class="btn btn-light mr-4 bg-info" (click)="modificarTicket(t._id)">
+            Modificar
+          </button>
+          <button type="button" class="btn btn-primary bg-danger" (click)="eliminarTicket(t._id)">
+            Eliminar
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <h3>Resumen de Ventas</h3>
-  <p>Total Local: {{ resumen.totalLocal }}</p>
-  <p>Total Extranjero: {{ resumen.totalExtranjero }}</p>
-  <p>Total General: {{ resumen.totalGeneral }}</p>
+  <button type="button" (click)="agregarTicket()" class="btn btn-info">AGREGAR</button>
+</div>
+
+<div class="container">
+  <h3 class="mt-5">Filtrar Lista de Tickets </h3>
+  <div class="input-group">
+    <label class="input-group-text" for="categoria">Categoria Espectador</label>
+    <select class="form-select" aria-label="Example select with button addon" name="categoria" id="categoria" [(ngModel)]="categoria">
+      <option value="l">Local</option>
+      <option value="e">Extranjero</option>
+    </select>
+    <button class="btn btn-outline-secondary" type="button" (click)="filtrar()">Filtrar</button>
+  </div>
+  <table class="table table-bordered mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Precio Ticket</th>
+        <th scope="col">Categoria espectador</th>
+        <th scope="col">Fecha Compra</th>
+        <th scope="col">Espectador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of ticketsFiltrados">
+        <td>{{t.precioTicket}}</td>
+        <td>{{ t.categoriaEspectador === 'l' ? 'Local' : t.categoriaEspectador === 'e' ? 'Extranjero' : 'Desconocido'}}</td>
+        <td>{{t.fechaCompra}}</td>
+        <td>{{t.espectador.apellido}}, {{t.espectador.nombre}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        ¿Está seguro de continuar con la eliminación de este Ticket de la lista?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="eliminarTicket(ticketRemove._id)" data-bs-dismiss="modal">Continuar</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -9,12 +9,11 @@ app.use(express.json());
 app.use(cors({ origin: 'http://localhost:4200' }));
 
 // Cargamos el modulo de direccionamiento de rutas
-app.use('/api/agente', require('./routes/agente.route.js'));
-app.use('/api/sector', require('./routes/sector.route.js'));
+
 app.use('/api/productos', require('./routes/producto.route.js'));
 app.use('/api/transactions', require('./routes/transaction.route.js'));
 app.use('/api/espectadores', require('./routes/espectador.route.js'));
-app.use('/api/tickets', require('./routes/ticket.route.js'));
+app.use('/api/ticket', require('./routes/ticket.route.js'));
 
 // Sirve archivos estáticos desde el directorio uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

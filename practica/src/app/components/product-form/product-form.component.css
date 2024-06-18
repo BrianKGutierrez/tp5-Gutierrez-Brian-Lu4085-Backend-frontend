@@ -1,0 +1,40 @@
+/* product.component.css */
+
+/* Estilos generales para el formulario */
+form {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el título */
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+  
+  /* Estilos para los inputs */
+  .form-control {
+    margin-bottom: 15px;
+  }
+  
+  /* Estilos para el botón */
+  .btn-primary {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  /* Estilos de retroalimentación de validación */
+  .invalid-feedback {
+    display: none;
+  }
+  
+  .was-validated .form-control:invalid ~ .invalid-feedback,
+  .form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+  }
+  

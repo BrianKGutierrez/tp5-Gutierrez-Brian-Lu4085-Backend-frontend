@@ -1,18 +1,20 @@
-<h2>Product List</h2>
+<!-- product-list.component.html -->
+<h2>Lista de Productos</h2>
 
 <div class="row">
-  <div class="col-md-4" *ngFor="let product of products">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" [src]="'http://localhost:3000/uploads/' + product.image" alt="{{product.name}}">
-      <div class="card-body">
+  <div class="col-lg-3 col-md-4 col-sm-6 mb-4" *ngFor="let product of products">
+    <div class="card h-100">
+      <img class="card-img-top img-fluid" [src]="'http://localhost:3000/uploads/' + product.image" alt="{{product.name}}">
+      <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{product.name}}</h5>
         <p class="card-text">{{product.description}}</p>
-        <p>Price: {{product.price}}</p>
+        <p>Precio: {{product.price}}</p>
         <p>Stock: {{product.stock}}</p>
-        <p>Featured: {{product.featured ? 'Yes' : 'No'}}</p>
-        
-        <button class="btn btn-warning" (click)="onEdit(product._id)">Edit</button>
-        <button class="btn btn-danger" (click)="onDelete(product._id)">Delete</button>
+        <p>Destacado: {{product.featured ? 'Sí' : 'No'}}</p>
+        <div class="mt-auto">
+          <button class="btn btn-warning me-2" (click)="onEdit(product._id)">Editar</button>
+          <button class="btn btn-danger" (click)="onDelete(product._id)">Eliminar</button>
+        </div>
       </div>
     </div>
   </div>

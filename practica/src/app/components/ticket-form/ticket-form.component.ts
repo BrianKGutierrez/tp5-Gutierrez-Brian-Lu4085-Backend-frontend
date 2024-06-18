@@ -1,90 +1,102 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TicketService } from '../../services/ticket.service';
+import { Component } from '@angular/core';
 import { Ticket } from '../../models/ticket';
-import { Espectador } from '../../models/espectador';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TicketService } from '../../services/ticket.service';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Espectador } from '../../models/espectador';
+import { EspectadorService } from '../../services/espectador.service';
 
 @Component({
   selector: 'app-ticket-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './ticket-form.component.html',
-  styleUrls: ['./ticket-form.component.css']
+  styleUrl: './ticket-form.component.css'
 })
-export class TicketFormComponent implements OnInit {
-  ticketForm!: FormGroup;
-  espectadores: Espectador[] = [];
-  precioCobrado: number | null = null;
+export class TicketFormComponent {
+  accion: string=''; 
+  ticket!: Ticket; 
+  espectadores : Array<Espectador>=[]; 
 
-  constructor(
-    private fb: FormBuilder,
-    private ticketService: TicketService,
-    private router: Router
-  ) { }
+  constructor(private activatedRoute: ActivatedRoute, 
+              private ticketService: TicketService, 
+             private espectadorService: TicketService, 
+              private router: Router
+  ){
+    this.iniciarVariable();
+    this.cargarEspectadores(); 
 
+  }
   ngOnInit(): void {
-    this.ticketForm = this.fb.group({
-      precioTicket: ['', Validators.required],
-      categoriaEspectador: ['', Validators.required],
-      fechaCompra: ['', Validators.required],
-      espectadorId: ['', Validators.required]
-    });
-
-    this.ticketService.getEspectadores().subscribe(
-      data => this.espectadores = data,
-      error => console.error(error)
-    );
-
-    this.ticketForm.get('categoriaEspectador')?.valueChanges.subscribe(value => {
-      this.updatePrecioCobrado();
-    });
-
-    this.ticketForm.get('precioTicket')?.valueChanges.subscribe(value => {
-      this.updatePrecioCobrado();
-    });
-  }
-
-  updatePrecioCobrado(): void {
-    const precioTicket = this.ticketForm.get('precioTicket')?.value;
-    const categoriaEspectador = this.ticketForm.get('categoriaEspectador')?.value;
-
-    if (precioTicket && categoriaEspectador) {
-      if (categoriaEspectador === 'local') {
-        this.precioCobrado = precioTicket * 0.8;
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id'] == "0") {
+        this.accion = "new";
+        this.iniciarVariable(); 
       } else {
-        this.precioCobrado = precioTicket;
+        this.accion = "update";
+        this.cargarTicket(params['id']);
       }
-    } else {
-      this.precioCobrado = null;
-    }
+    });
+  }
+  
+  iniciarVariable(){
+    this.ticket = new Ticket (); 
+  }
+  cargarTicket (id: string){
+    this.ticketService.getTicketById(id).subscribe(
+      (result)=>{
+        Object.assign(this.ticket, result); 
+        this.ticket.espectador= this.espectadores.find (espectador=>(espectador._id=== this.ticket.espectador._id))!
+      }
+    )
+
+  }
+  cargarEspectadores (){
+    this.espectadores= new Array <Espectador>(); 
+    this.espectadorService.getEspectadores().subscribe(
+      (data)=>{
+        let vespectador: Espectador= new Espectador (); 
+        data.forEach((element:any)=> {
+          Object.assign(vespectador, element); 
+          this.espectadores.push (vespectador); 
+          vespectador = new Espectador();   
+        }); 
+      },
+      (error)=>{
+        console.log(error); 
+      }
+
+    )
+  }
+  actualizarTicket(){
+    this.ticketService.updateTicket(this.ticket).subscribe(
+      result=>{
+        if(result.status ==1){
+          alert("El Ticket se actualizo correctamente"); 
+          this.router.navigate(['ticket']); 
+        }
+
+      },
+      error =>{
+        alert ("Ha ocurrido un error"); 
+        console.log(error); 
+      }
+    )
+  }
+  registrarTicket (){ 
+    this.ticketService.addTicket (this.ticket).subscribe (
+      result=>{
+        if(result.status==1){
+          alert("El ticket  se agrego correctamente"); 
+          this.router.navigate(['ticket']);
+        }
+      }, 
+      error=>{
+        alert ("Ha ocurrido un error"); 
+        console.log(error); 
+      }
+    )
   }
 
-  onSubmit(): void {
-    if (this.ticketForm.valid) {
-      const espectador = this.espectadores.find(e => e._id === this.ticketForm.get('espectadorId')?.value);
-      if (!espectador) {
-        console.error('Espectador no encontrado');
-        return;
-      }
-
-      const ticket: Ticket = {
-        ...this.ticketForm.value,
-        precioCobrado: this.precioCobrado!,
-        espectador: espectador
-      };
-
-      console.log('Ticket a enviar:', ticket); // Agrega esto para depurar los datos enviados
-
-      this.ticketService.createTicket(ticket).subscribe(
-        response => {
-          console.log('Ticket creado', response);
-          this.router.navigate(['/tickets']);
-        },
-        error => console.error('Error al crear el ticket', error)
-      );
-    }
-  }
 }

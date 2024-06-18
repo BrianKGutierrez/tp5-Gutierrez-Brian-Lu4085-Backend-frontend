@@ -1,0 +1,56 @@
+.card-img-top{
+    height: 20rem;
+
+}
+.container-fluid.bg-danger {
+    background-color: #f5f2f2; /* bg-danger de Bootstrap es #dc3545 */
+    padding: 20px;
+    border-radius: 8px;
+    color: white; /* Asegura que el texto sea visible sobre el fondo rojo */
+  }
+  
+  /* Estilos para los títulos */
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+  }
+  
+  /* Ajustes para el carousel */
+  .carousel-item {
+    text-align: center;
+    
+    justify-content: center;
+    align-items: center;
+    min-height: 300px; /* Ajusta la altura según tu necesidad */
+  }
+  
+  /* Estilo para la tarjeta dentro del carousel */
+  .carousel-item .card {
+    background-color: #7a2f2f46; /* Fondo blanco para la tarjeta */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para la imagen dentro de la tarjeta */
+  .carousel-item .card-img-top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Estilos para el contenido de la tarjeta */
+  .carousel-item .card-body {
+    padding: 15px;
+  }
+  
+  /* Ajusta los controles del carousel */
+  .custom-carousel-control {
+    width: 5%;
+  }
+  
+  .custom-carousel-icon {
+    filter: invert(100%);
+  }

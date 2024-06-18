@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { SectorComponent } from './components/sector/sector.component';
-import { SectorFormComponent } from './components/sector-form/sector-form.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
@@ -16,17 +14,7 @@ import { EspectadorCreateComponent } from './components/espectador-create/espect
 
 
 export const routes: Routes = [
-{
-    path:'sector',
-    component:SectorComponent
 
-},
-
-{
-    path:'sectorform/:id',
-    component:SectorFormComponent,
-
-},
 // esto es para que cuando me equivoque de poner el link se dirija al home
 
 
@@ -41,8 +29,16 @@ export const routes: Routes = [
   { path: 'transactions', component: TransactionListComponent },
   { path: 'transactions/email', component: TransactionByEmailComponent },
   { path: 'transactions/currency', component: TransactionByCurrencyComponent },
-  { path: 'ticket-list', component: TicketListComponent },
-  { path: 'create-ticket', component: TicketFormComponent },
+  {
+    path: 'ticket',
+    component: TicketListComponent
+}, 
+{
+    path: 'ticket-form/:id', 
+    component: TicketFormComponent
+
+},
+
   { path: 'espectador-list', component: EspectadorListComponent},
   { path: 'espectador-create', component: EspectadorCreateComponent },
   { path: 'espectadores/:id', component: EspectadorDetailComponent },

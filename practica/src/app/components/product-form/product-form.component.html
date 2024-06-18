@@ -1,28 +1,41 @@
-<h2>{{editMode ? 'Edit' : 'Add'}} Product</h2>
-<form (ngSubmit)="onSubmit()" [formGroup]="productForm">
-  <div>
-    <label for="name">Name</label>
-    <input id="name" formControlName="name" type="text">
+<!-- product.component.html -->
+<h2>{{editMode ? 'Editar' : 'Añadir'}} Producto</h2>
+<form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="needs-validation bg-info" novalidate>
+  <div class="mb-3">
+    <label for="name" class="form-label">Nombre</label>
+    <input id="name" formControlName="name" type="text" class="form-control" required>
+    <div class="invalid-feedback">
+      Por favor, introduce un nombre.
+    </div>
   </div>
-  <div>
-    <label for="description">Description</label>
-    <textarea id="description" formControlName="description"></textarea>
+  <div class="mb-3">
+    <label for="description" class="form-label">Descripción</label>
+    <textarea id="description" formControlName="description" class="form-control" rows="3" required></textarea>
+    <div class="invalid-feedback">
+      Por favor, introduce una descripción.
+    </div>
   </div>
-  <div>
-    <label for="price">Price</label>
-    <input id="price" formControlName="price" type="number">
+  <div class="mb-3">
+    <label for="price" class="form-label">Precio</label>
+    <input id="price" formControlName="price" type="number" class="form-control" required>
+    <div class="invalid-feedback">
+      Por favor, introduce un precio válido.
+    </div>
   </div>
-  <div>
-    <label for="stock">Stock</label>
-    <input id="stock" formControlName="stock" type="number">
+  <div class="mb-3">
+    <label for="stock" class="form-label">Stock</label>
+    <input id="stock" formControlName="stock" type="number" class="form-control" required>
+    <div class="invalid-feedback">
+      Por favor, introduce una cantidad de stock válida.
+    </div>
   </div>
-  <div>
-    <label for="featured">Featured</label>
-    <input id="featured" formControlName="featured" type="checkbox">
+  <div class="mb-3 form-check">
+    <input id="featured" formControlName="featured" type="checkbox" class="form-check-input">
+    <label for="featured" class="form-check-label">Destacado</label>
   </div>
-  <div>
-    <label for="image">Image</label>
-    <input id="image" type="file" (change)="onFileSelect($event)">
+  <div class="mb-3">
+    <label for="image" class="form-label">Imagen</label>
+    <input id="image" type="file" class="form-control" (change)="onFileSelect($event)">
   </div>
-  <button type="submit">{{editMode ? 'Update' : 'Create'}} Product</button>
+  <button type="submit" class="btn btn-primary">{{editMode ? 'Actualizar' : 'Crear'}} Producto</button>
 </form>

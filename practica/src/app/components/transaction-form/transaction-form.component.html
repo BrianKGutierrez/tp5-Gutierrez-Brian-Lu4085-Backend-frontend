@@ -1,35 +1,37 @@
-<!-- src/app/components/transaction-form/transaction-form.component.html -->
-<h2>Create Transaction</h2>
-<form (ngSubmit)="onSubmit()" [formGroup]="transactionForm" >
-  <div>
-    <label for="monedaOrigen">Moneda Origen</label>
-    <input id="monedaOrigen" type="text" formControlName="monedaOrigen">
+<div class="container mt-5 mb-5">
+  <div class="d-flex justify-content-center">
+      <h4>Formulario de ticket</h4>
   </div>
+  <form>
+      <div class="mb-3">
+          <label for="monedaOrigen" class="form-label">Moneda Origen: </label>
+          <input type="text" class="form-control" id="monedaOrigen" name="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen">
+      </div>
+      <div class="mb-3">
+          <label for="cantidadOrigen" class="form-label">Cantidad Origen: </label>
+          <input type="number" class="form-control" id="cantidadOrigen" name="cantidadOrigen" [(ngModel)]="transaccion.cantidadOrigen">
+      </div>
+      <div class="mb-3">
+          <label for="monedaDestino" class="form-label">Moneda Destino: </label>
+          <input type="text" class="form-control" id="monedaDestino" name="monedaDestino" [(ngModel)]="transaccion.monedaDestino">
+      </div>
 
-  <div>
-    <label for="cantidadOrigen">Cantidad Origen</label>
-    <input id="cantidadOrigen" type="number" formControlName="cantidadOrigen">
-  </div>
+      <div class="mb-3">
+          <label for="cantidadDestino" class="form-label">Cantidad Destino: </label>
+          <input type="number" class="form-control" id="cantidadDestino" name="cantidadDestino" [(ngModel)]="transaccion.cantidadDestino">
+      </div>
+      <div class="mb-3">
+          <label for="email" class="form-label">Email: </label>
+          <input type="text" class="form-control" id="email" name="email" [(ngModel)]="transaccion.emailCliente">
+      </div>
+      <div class="mb-3">
+          <label for="tasaConversion" class="form-label">Tasa de Conversion: </label>
+          <input type="number" class="form-control" id="tasaConversion" name="tasaConversion" [(ngModel)]="transaccion.tasaConversion">
+      </div>
+      <div class="mt-5">
+          <button  type="submit" class="btn btn-info" (click)="registrarTransaccion()">Registrar</button>
 
-  <div>
-    <label for="monedaDestino">Moneda Destino</label>
-    <input id="monedaDestino" type="text" formControlName="monedaDestino">
-  </div>
+      </div>
 
-  <div>
-    <label for="cantidadDestino">Cantidad Destino</label>
-    <input id="cantidadDestino" type="number" formControlName="cantidadDestino">
-  </div>
-
-  <div>
-    <label for="emailCliente">Email Cliente</label>
-    <input id="emailCliente" type="email" formControlName="emailCliente">
-  </div>
-
-  <div>
-    <label for="tasaConversion">Tasa de Conversión</label>
-    <input id="tasaConversion" type="number" formControlName="tasaConversion">
-  </div>
-
-  <button type="submit">Create Transaction</button>
-</form>
+  </form>
+</div>

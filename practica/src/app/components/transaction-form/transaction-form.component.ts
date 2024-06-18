@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TransactionService } from '../../services/transaction.service';
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-transaction-form',
@@ -13,34 +14,39 @@ import { TransactionService } from '../../services/transaction.service';
 })
 export class TransactionFormComponent {
 
-  transactionForm: FormGroup;
-
-  constructor(
-    private fb: FormBuilder,
-    private transactionService: TransactionService,
-    private router: Router
+  transaccion!: Transaction; 
+  constructor(private activatedRoute: ActivatedRoute,
+              private transaccionService: TransactionService,
+              private router: Router
   ) {
-    this.transactionForm = this.fb.group({
-      monedaOrigen: ['', Validators.required],
-      cantidadOrigen: ['', Validators.required],
-      monedaDestino: ['', Validators.required],
-      cantidadDestino: ['', Validators.required],
-      emailCliente: ['', [Validators.required, Validators.email]],
-      tasaConversion: ['', Validators.required]
+    this.iniciarVariable();
+
+  }
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id'] == "0") {
+        this.iniciarVariable();
+      } 
     });
   }
 
-  onSubmit() {
-    if (this.transactionForm.valid) {
-      this.transactionService.createTransaction(this.transactionForm.value).subscribe(
-        response => {
-          console.log('Transaction created', response);
-          this.router.navigate(['/transactions']);
-        },
-        error => {
-          console.error('Error creating transaction', error);
-        }
-      );
-    }
+  iniciarVariable() {
+    this.transaccion = new Transaction();
   }
+  registrarTransaccion(){
+    this.transaccionService.createTransaction(this.transaccion).subscribe(
+
+      (result)=>{
+        console.log (result); 
+        if (result.status==1){
+          alert ("La transaccion se agrego correctamente"); 
+          this.router.navigate (['transaccion']); 
+        }
+      }, 
+      (error)=>{
+        alert("Ha ocurrido un error"); 
+      }
+    )
+  }
+
 }

@@ -1,12 +1,13 @@
-// routes/ticket.route.js
 const express = require('express');
 const router = express.Router();
-const ticketCtrl = require('../controllers/ticket.controller');
+const ticketController = require('../controllers/ticket.controller');
 
-router.post('/', ticketCtrl.createTicket);
-router.get('/', ticketCtrl.getTickets);
-router.put('/:id', ticketCtrl.updateTicket);
-router.delete('/:id', ticketCtrl.deleteTicket);
-router.get('/categoria/:categoria', ticketCtrl.getTicketsByCategoria);
+// Rutas para manejar las operaciones CRUD de Ticket
+router.get('/', ticketController.getTickets);
+router.get('/:id', ticketController.getTicketById);
+router.get('/category/:categoria', ticketController.getTicketByCategory);
+router.post('/', ticketController.addTicket);
+router.put('/:id', ticketController.updateTicket);
+router.delete('/:id', ticketController.removeTicket);
 
 module.exports = router;

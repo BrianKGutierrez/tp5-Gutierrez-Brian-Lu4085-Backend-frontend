@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SectorComponent } from './components/sector/sector.component';
-import { SectorFormComponent } from './components/sector-form/sector-form.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
@@ -21,7 +18,7 @@ import { EspectadorCreateComponent } from './components/espectador-create/espect
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent,SectorComponent,SectorFormComponent,ProductListComponent,ProductFormComponent,FeaturedProductsComponent, TransactionListComponent, TransactionByEmailComponent,TransactionByCurrencyComponent,TransactionFormComponent,TicketFormComponent,TicketListComponent,EspectadorDetailComponent,EspectadorListComponent,EspectadorCreateComponent],
+  imports: [RouterOutlet, HeaderComponent,ProductListComponent,ProductFormComponent,FeaturedProductsComponent, TransactionListComponent, TransactionByEmailComponent,TransactionByCurrencyComponent,TransactionFormComponent,TicketFormComponent,TicketListComponent,EspectadorDetailComponent,EspectadorListComponent,EspectadorCreateComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

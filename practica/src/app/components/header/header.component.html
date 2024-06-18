@@ -1,14 +1,13 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- navbar.component.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
+    <a class="navbar-brand" >MiApp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" [routerLink]="['sector']">Sector</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" [routerLink]="['sectorform','0']">lISTADO(NUEVO)</a>
-        </li>
-         <li class="nav-item dropdown">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Productos
           </a>
@@ -26,7 +25,6 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['transactions']">Transacciones</a></li>
             <li><a class="dropdown-item" [routerLink]="['transactions/new']">Nueva Transaccion</a></li>
-            <!-- <li><a class="dropdown-item" [routerLink]="[]">Transacciones Registradas</a></li> -->
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" [routerLink]="['transactions/email']">Transacciones por cliente</a></li>
             <li><a class="dropdown-item" [routerLink]="['transactions/currency']">Transacciones por divisas</a></li>
@@ -37,15 +35,12 @@
             Tickets
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['ticket-list']">Listado de ticket</a></li>
-            <li><a class="dropdown-item" [routerLink]="['create-ticket']">Nuevo ticket</a></li>
-            <li><a class="dropdown-item" [routerLink]="[]">Transacciones Registradas</a></li>
+            <li><a class="dropdown-item" [routerLink]="['ticket']">Listado</a></li>
+            <li><a class="dropdown-item" [routerLink]="['ticket-form', '0']">Agregar Ticket</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" [routerLink]="['espectador-create']">Crear Espectador</a></li>
             <li><a class="dropdown-item" [routerLink]="['espectador-list']">Lista de Espectadores</a></li>
-          
-            
-          </ul>//
+          </ul>
         </li>
       </ul>
     </div>

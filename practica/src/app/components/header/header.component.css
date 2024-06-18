@@ -1,0 +1,52 @@
+/* navbar.component.css */
+
+/* Estilo para toda la barra de navegación */
+.navbar {
+    width: 100%;
+    background-color: #007bff; /* Color azul oscuro de Bootstrap */
+  }
+  
+  /* Estilo para los elementos del menú */
+  .nav-link {
+    color: #fff !important;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #ffd700 !important; /* Color dorado al pasar el cursor */
+  }
+  
+  /* Estilo para los dropdowns */
+  .dropdown-menu {
+    background-color: #007bff; /* Color azul oscuro de Bootstrap */
+    border: none;
+  }
+  
+  .dropdown-item {
+    color: #fff;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #0056b3; /* Color azul más oscuro */
+    color: #ffd700; /* Color dorado al pasar el cursor */
+  }
+  
+  /* Estilo para el botón de colapso en dispositivos móviles */
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%28255, 255, 255, 1%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+  }
+  
+  .navbar-brand {
+    color: #fff;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-brand:hover {
+    color: #ffd700; /* Color dorado al pasar el cursor */
+  }
+  

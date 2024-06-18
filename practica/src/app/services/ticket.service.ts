@@ -36,9 +36,9 @@ export class TicketService {
   getTickets(): Observable<any> {
     return this.http.get(this.urlBase);
   }
-  getTicketByCategoria(categoria: string): Observable<any> {
-    // No need for HttpParams if you're using a URL parameter
-    return this.http.get(`${this.urlBase}category/:${categoria}`);
+ getTicketByCategoria(categoria: string): Observable<any> {
+    // Using the correct URL with the categoria parameter
+    return this.http.get(`${this.urlBase}category/${categoria}`);
   }
   updateTicket(ticket: Ticket): Observable<any> {
     let httpOptions = {

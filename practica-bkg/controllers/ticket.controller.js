@@ -25,20 +25,20 @@ const getTicketById = async (req, res) => {
 
 const getTicketByCategory = async (req, res) => {
     try {
-      const categoria = req.query.categoria; // Changed from req.params.categoria to req.query.categoria
-      let query = { categoriaEspectador: categoria };
-  
-      const tickets = await Ticket.find(query).populate('espectador');
-      
-      if (!tickets.length) {
-        return res.status(404).json({ message: 'No tickets found for this category.' });
-      }
-  
-      res.status(200).json(tickets);
-    } catch (error) {
-      res.status(500).send(error.message);
+        const categoria = req.params.categoria; // Changed from req.query.categoria to req.params.categoria
+        let query = { categoriaEspectador: categoria };
+
+        const tickets = await Ticket.find(query).populate('espectador');
+        
+        if (!tickets.length) {
+            return res.status(404).json({ message: 'No tickets found for this category.' });
+        }
+
+        res.status(200).json(tickets);
+    } catch (err) {
+        res.status(500).send(err.message);
     }
-  };
+};
 // Crear un nuevo ticket
 const addTicket = async (req, res) => {
     try {

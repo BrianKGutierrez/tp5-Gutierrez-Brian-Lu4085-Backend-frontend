@@ -18,7 +18,11 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+<<<<<<< HEAD
    
+=======
+    
+>>>>>>> ec9c51553ad074347eaa393c0d26f4fed4f108b9
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
     "rxjs": "~7.8.0",

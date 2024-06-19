@@ -1,7 +1,7 @@
 <!-- src/app/components/transaction-by-email/transaction-by-email.component.html -->
-<h2>Transactions by Email</h2>
+<h2>Transacciones por Email</h2>
 <input type="text" [(ngModel)]="email" placeholder="Enter email">
-<button (click)="getTransactions()">Search</button>
+<button (click)="getTransactions()">Buscar</button>
 <ul>
   <li *ngFor="let transaction of transactions">
     {{ transaction.monedaOrigen }} {{ transaction.cantidadOrigen }} to {{ transaction.monedaDestino }} {{ transaction.cantidadDestino }} ({{ transaction.emailCliente }})
